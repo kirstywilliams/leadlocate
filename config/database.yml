@@ -1,0 +1,24 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: leadlocate_development
+  username: kirsty
+  password:
+  host: localhost
+
+test:
+  <<: *default
+  database: leadlocate_test
+  username: kirsty
+  password: 
+  host: localhost
+
+production:
+  <<: *default
+  database: leadlocate_production
+  username: leadlocate
+  password: <%= ENV['LEADLOCATE_DATABASE_PASSWORD'] %>

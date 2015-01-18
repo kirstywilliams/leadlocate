@@ -1,0 +1,56 @@
+//
+// Variables
+// --------------------------------------------------
+
+// Layout
+
+
+// Colors
+$light-gray: #F9F9F9;
+$black: #000;
+
+
+// Transparency
+$rgba-gray-50: rgba(66, 66, 66, 0.5);
+$rgba-gray-30: rgba(239, 239, 239, 0.3);
+$rgba-black-10: rgba(0, 0, 0, 0.1);
+$rgba-black-20: rgba(0, 0, 0, 0.2);
+$rgba-black-30: rgba(0, 0, 0, 0.3);
+$rgba-black-40: rgba(0, 0, 0, 0.4);
+$rgba-black-50: rgba(0, 0, 0, 0.5);
+$rgba-black-80: rgba(0, 0, 0, 0.8);
+$rgba-black-90: rgba(0, 0, 0, 0.9);
+$rgba-blue-10: rgba(54, 149, 213, 0.1);
+$rgba-blue-15: rgba(54, 149, 213, 0.15);
+$rgba-blue-20: rgba(54, 149, 213, 0.2);
+$rgba-blue-25: rgba(54, 149, 213, 0.25);
+$rgba-blue-40: rgba(54, 149, 213, 0.4);
+$rgba-blue-70: rgba(54, 149, 213, 0.7);
+$rgba-blue-90: rgba(54, 149, 213, 0.9);
+$rgba-white-20: rgba(255, 255, 255, 0.2);
+$rgba-white-30: rgba(255, 255, 255, 0.3);
+$rgba-white-40: rgba(255, 255, 255, 0.4);
+$rgba-white-50: rgba(255, 255, 255, 0.5);
+$rgba-white-60: rgba(255, 255, 255, 0.6);
+$rgba-white-70: rgba(255, 255, 255, 0.7);
+$rgba-white-90: rgba(255, 255, 255, 0.9);
+$rgba-white-95: rgba(244, 244, 244, 0.95);
+
+// Link colors
+
+// Body background (Affects main content background only)
+$body-bg: $light-gray;
+
+// Content
+$bodyText: $black;
+
+// Screen widths - Same as bootstrap default settings
+$screen-xs: 480px;
+$screen-sm: 767px;
+$screen-md: 992px;
+$screen-lg: 1200px;
+
+// Fonts 
+$body-font: 'open-sanslight', Arial, sans-serif;
+$body-font-2: 'open-sansregular', Arial, sans-serif;
+$body-font-3: 'open-sanssemibold', Arial, sans-serif;
