@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 20150118210245) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "accounts", ["owner_id"], name: "index_accounts_on_owner_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email",                  default: "", null: false

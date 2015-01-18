@@ -10,7 +10,7 @@ class Account < ActiveRecord::Base
 						  uniqueness: { case_sensitive: false },
 						  format: { with: /\A[\w\-]+\Z/i, message: 'contains invalid characters' },
 						  exclusion: { in: RESTRICTED_SUBDOMAINS, message: 'restricted' }
-    
+
     accepts_nested_attributes_for :owner
 
     private

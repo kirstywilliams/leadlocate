@@ -23,6 +23,9 @@ gem 'whenever'
 ## Authentication
 gem 'devise'
 
+## Schema
+gem 'apartment'
+
 group :development, :test do
   gem 'guard'
   gem 'guard-livereload'

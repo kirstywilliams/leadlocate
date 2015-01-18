@@ -3,7 +3,7 @@ class AccountsController < ApplicationController
 
 	def new
 
-		@account = Account.new  
+		@account = Account.new
 		@account.build_owner
 
 	end
@@ -12,10 +12,12 @@ class AccountsController < ApplicationController
 
 		@account = Account.new(account_params)
 		if @account.valid?
+			Apartment::Tenant.create(@account.subdomain)
+			Apartment::Tenant.switch(@account.subdomain)
 			@account.save
-		 	redirect_to root_url, notice: 'Signed up successfully'
+		 	redirect_to new_user_session_url(subdomain: @account.subdomain)
 		else
-			render action: 'new'
+			render 'new'
 		end
 
 	end

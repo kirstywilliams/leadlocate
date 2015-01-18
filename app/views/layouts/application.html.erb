@@ -15,17 +15,17 @@
 
       <div class="pull-right right-buttons">
         <% if user_signed_in? %>
-          Hello, <%= current_user.name %> | 
+          Hello, <%= current_user.name %> |
           <%= link_to 'Sign out', destroy_user_session_path, method: 'delete', class: 'btn btn-default navbar-btn' %>
         <% end %>
       </div>
     </nav><!-- ./navbar -->
   </header><!-- ./container -->
-  
+
   <div class="main container">
     <%= flash_messages if show_layout_flash? %>
 
-    <div class="row"> 
+    <div class="row">
       <%= yield %>
     </div><!-- ./row -->
   </div><!-- ./container -->

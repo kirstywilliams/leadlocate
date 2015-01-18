@@ -17,7 +17,7 @@ module LayoutHelper
 
   def show_layout_flash?
     @layout_flash.nil? ? true : @layout_flash
-  end   
+  end
 
   def bootstrap_class_for flash_type
     case flash_type
@@ -30,5 +30,5 @@ module LayoutHelper
       when "notice"
         "alert-info"
     end
-  end 
+  end
 end

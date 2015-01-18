@@ -12,6 +12,8 @@ ActiveRecord::Migration.check_pending!
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
+Capybara.app_host = "http://example.com"
+
 RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = true
@@ -32,5 +34,7 @@ RSpec.configure do |config|
 
   config.after(:each) do
     DatabaseCleaner.clean
+    Apartment::Tenant.reset
+    drop_schemas
   end
 end
