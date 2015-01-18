@@ -1,0 +1,23 @@
+//
+// 	Messages
+// --------------------------------------------------
+
+.alert-success{
+	@extend .alert;
+	@extend .alert-success;
+}
+
+.alert-danger, .alert-block{
+	@extend .alert;
+	@extend .alert-danger;
+}
+
+.alert-info{
+	@extend .alert;
+	@extend .alert-info;
+}
+
+.alert-warning{
+	@extend .alert;
+	@extend .alert-warning;
+}

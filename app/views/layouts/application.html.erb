@@ -1,14 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Leadlocate</title>
+  <title>LeadLocate</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <header class="container">
+    <nav class="navbar navbar-default">
+      <div class="navbar-header">
+        <%= link_to 'LeadLocate', root_path, class: 'navbar-brand' %>
+      </div><!-- ./navbar-header -->
 
-<%= yield %>
+      <div class="pull-right right-buttons">
+        <% if user_signed_in? %>
+          Hello, <%= current_user.name %> | 
+          <%= link_to 'Sign out', destroy_user_session_path, method: 'delete', class: 'btn btn-default navbar-btn' %>
+        <% end %>
+      </div>
+    </nav><!-- ./navbar -->
+  </header><!-- ./container -->
+  
+  <div class="main container">
+    <%= flash_messages if show_layout_flash? %>
 
+    <div class="row"> 
+      <%= yield %>
+    </div><!-- ./row -->
+  </div><!-- ./container -->
 </body>
 </html>
