@@ -12,13 +12,12 @@
       <div class="navbar-header">
         <%= link_to 'LeadLocate', root_path, class: 'navbar-brand' %>
       </div><!-- ./navbar-header -->
-
-      <div class="pull-right right-buttons">
-        <% if user_signed_in? %>
-          Hello, <%= current_user.name %> |
+      <% if user_signed_in? %>
+        <div class="pull-right right-buttons">
+          <%= link_to 'New Query', new_query_path, class: 'btn btn-default navbar-btn' %>
           <%= link_to 'Sign out', destroy_user_session_path, method: 'delete', class: 'btn btn-default navbar-btn' %>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </nav><!-- ./navbar -->
   </header><!-- ./container -->
 

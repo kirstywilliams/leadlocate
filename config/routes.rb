@@ -17,13 +17,18 @@ end
 Rails.application.routes.draw do
 	
 	constraints(SubdomainPresent) do
-		devise_for :users
+
 		root 'queries#index', as: :subdomain_root
+		devise_for :users
+		resources :queries, except: [:index, :show, :destroy]
+
 	end
 
 	constraints(SubdomainBlank) do
-		resources :accounts, only: [:new, :create]
+
 		root 'home#index'
+		resources :accounts, only: [:new, :create]
+
 	end
 
 end

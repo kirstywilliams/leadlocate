@@ -1,0 +1,13 @@
+<%= simple_form_for(@query, wrapper_mappings: { boolean: :vertical_boolean }) do |f| %>
+
+	<%= f.input :name %>
+	<%= f.input :locality %>
+	<%= f.input :skill %>
+
+	<% if @query.persisted? %>
+		<%= f.input :archived, as: :boolean %>
+	<% end %>
+
+	<%= f.button :submit, class: 'btn-primary' %>
+
+<% end %>

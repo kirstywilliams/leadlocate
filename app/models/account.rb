@@ -4,6 +4,7 @@ class Account < ActiveRecord::Base
 	RESTRICTED_SUBDOMAINS = %w(www)
 
 	belongs_to :owner, class_name: 'User'
+	has_many :queries
 
 	validates :owner, presence: true
 	validates :subdomain, presence: true,
