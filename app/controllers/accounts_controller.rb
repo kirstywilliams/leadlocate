@@ -17,7 +17,7 @@ class AccountsController < ApplicationController
 			@account.save
 		 	redirect_to new_user_session_url(subdomain: @account.subdomain)
 		else
-			render 'new'
+			render :new
 		end
 
 	end
