@@ -2,6 +2,7 @@ class Query < ActiveRecord::Base
 
 	belongs_to :account
 	has_many :leads
+	has_many :temp_leads
 
 	validates :name, presence: true
 	validates :locality, presence: true,
