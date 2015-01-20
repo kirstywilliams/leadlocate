@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe 'query creation' do
-	let!(:account) { create(:account_with_schema) }
-	let(:user) { account.owner }
+	let(:user) { build(:user) }
+	let!(:account) { create(:account_with_schema, owner: user) }
 
 	before do
 
@@ -22,7 +22,7 @@ describe 'query creation' do
 		expect(page).to_not have_text "Archived"
 		click_button "Create Query"
 
-		click_button "Create Query"
+		expect(page).to have_text "Query created!"
 		expect(page).to have_text "Test Query"
 
 	end

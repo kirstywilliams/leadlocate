@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
 		root 'queries#index', as: :subdomain_root
 		devise_for :users
-		resources :queries, except: [:index, :show, :destroy]
+		resources :queries, except: [:show, :destroy]
 
 	end
 
