@@ -21,4 +21,10 @@ RSpec.describe Query, :type => :model do
   	expect(Query.new).to_not be_archived
   	
   end
+
+  describe 'associations' do
+
+    it { should belong_to :account }
+    
+  end
 end

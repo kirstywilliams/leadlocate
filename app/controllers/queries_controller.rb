@@ -45,7 +45,7 @@ class QueriesController < ApplicationController
 
 	def query_params
 
-		params.require(:query).permit(:name, :locality, :skill, :archived)
+		params.require(:query).permit(:query_id, :name, :locality, :skill, :archived)
 		
 	end
 
