@@ -63,13 +63,12 @@ class YahooSearchScraper
         /(linkedin.com\/about)/i, /(linkedin.com\/settings)/i,
         /(linkedin.com\/shareArticle)/i, /(\/recommendations)/i,
         /(\/connections)/i, /(linkedin.com\/search)/i, /(\/group)/i, 
-        /(\s\-\s)[a-zâñéÖ\s]+/i, /[a-zâñéÖ\s]+/i, /(\s\|\s)/i, 
         /(profiles)/i, /(linkedin.com\/job)/i, /(linkedin.com\/jobs2)/i]
       
       re = Regexp.union(bad_patterns)
       partition_pattern = /(\s\-\s)[a-zâñéÖ\s]+/i
       
-      unless ((profile_url =~ correct_pattern) and (profile_url !~ re))
+      if((profile_url =~ correct_pattern) and (profile_url !~ re))
         partition = person.search(@link_value).first.text.strip.partition(partition_pattern)
         
         @search_results << {url: profile_url}
