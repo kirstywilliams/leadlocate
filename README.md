@@ -5,10 +5,9 @@
 **LeadLocate**, scours the web to find profiles *matching* your defined criteria.
 
 ### Todo
-1. Add invite functionality
-2. Implement queue and cronjobs
-3. Implement scraper
-4. Implement profile model
-5. Develop front-end
-6. Build on basic features
+1. Implement Profile model
+2. Implement scraper
+3. Implement queue and cronjobs
+4. Develop front-end
+5. Build on basic features
 
