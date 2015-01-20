@@ -16,9 +16,6 @@ RSpec.describe Query, :type => :model do
 
   end
 
-  describe 'associations' do
-  end
-
   it 'defaults archived to false' do
 
   	expect(Query.new).to_not be_archived
