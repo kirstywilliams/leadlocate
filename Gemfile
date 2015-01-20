@@ -21,7 +21,8 @@ gem 'mechanize'
 gem 'whenever'
 
 ## Authentication
-gem 'devise'
+gem 'devise', '>= 2.0.0'
+gem 'devise_invitable', '~> 1.3.4'
 
 ## Schema
 gem 'apartment'
@@ -35,6 +36,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'database_cleaner'
   gem 'shoulda-matchers'
+  gem 'email_spec'
   gem 'letter_opener'
   gem 'browser_details'
   gem 'metric_fu'

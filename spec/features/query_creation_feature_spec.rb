@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe 'query creation' do
-	let(:user) { build(:user) }
-	let!(:account) { create(:account_with_schema, owner: user) }
+	let!(:account) { create(:account_with_schema) }
+	let(:user) { account.owner }
 
 	before do
 

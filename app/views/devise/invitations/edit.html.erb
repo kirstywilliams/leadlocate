@@ -1,0 +1,14 @@
+<div class="col-md-6 col-md-offset-3 panel panel-default">
+	<div class="panel-body">
+		<h2>Create an Account</h2>
+
+	    <%= simple_form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put } do |f| %>
+	    	<%= f.hidden_field :invitation_token %>
+	    	<%= f.input :name %>
+	    	<%= f.input :password %>
+	    	<%= f.input :password_confirmation %>
+
+	    	<%= f.button :submit, "Create Account", class: 'btn-primary' %>
+	    <% end %><!-- ./form -->
+  	</div><!-- ./panel-body -->
+</div><!-- ./panel -->
