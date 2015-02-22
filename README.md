@@ -4,10 +4,8 @@
 
 **LeadLocate**, scours the web to find profiles *matching* your defined criteria.
 
-1. Location - currently has to match format of location's on LinkedIn profiles, i.e. 'City, Country'
-2. Skill - A skill or specific attribute that will be listed in profiles, e.g. 'Ruby on Rails'
-
-Note: if using/working on the app locally, after creating an account you will be redirected to localhost, replace with a local virtual host (lvh.me).
+1. Location - currently has to match format of locations on LinkedIn profiles, i.e. 'City, Country'
+2. Skill - A skill or specific attribute that will be listed on profiles, e.g. 'Ruby on Rails'
 
 ## Setup
 
