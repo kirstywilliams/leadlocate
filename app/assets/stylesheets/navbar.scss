@@ -3,3 +3,46 @@
 // --------------------------------------------------
 
 .navbar .right-buttons{ margin-right: 15px; margin-left: 25px; }
+
+.navbar-default .navbar-brand {
+    color: rgba(247, 247, 247, 1);
+}
+.navbar-default {
+    font-size: 14px;
+    background-color: rgba(51, 51, 51, 1);
+    border-bottom-width: 0px;
+}
+.navbar-default .navbar-nav>li>a {
+    color: rgba(119, 119, 119, 1);
+    background-color: rgba(51, 51, 51, 1);
+}
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>li>a:focus {
+    color: rgba(51, 51, 51, 1);
+    background-color: rgba(223, 255, 13, 1);
+}
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:hover,
+.navbar-default .navbar-nav>.active>a:focus {
+    color: rgba(85, 85, 85, 1);
+    background-color: rgba(0, 191, 255, 1);
+}
+.navbar-default .navbar-toggle {
+    border-color: #00bfff;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+    background-color: #00bfff;
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #00bfff;
+}
+.navbar-default .navbar-toggle:hover .icon-bar,
+.navbar-default .navbar-toggle:focus .icon-bar {
+    background-color: #333333;
+}
+
+.navbar-custom .btn-default{
+    background-color: $lime-green;
+    border-color: $lime-green;
+}

@@ -8,9 +8,10 @@ class YahooSearchScraper
   
   USER_AGENTS = ['Windows IE 6', 'Windows IE 7', 'Windows Mozilla', 'Mac Safari', 'Mac FireFox', 'Mac Mozilla', 'Linux Mozilla', 'Linux Firefox', 'Linux Konqueror']
 
-  def initialize(query)
+  def initialize(query_id)
+
     @engine = 'yahoo'
-    @query = query
+    @query = Query.find(query_id)
     @locality = URI::encode(@query.locality)
     @skill = URI::encode(@query.skill.strip)
     @class_value = 'div.res'
@@ -20,15 +21,22 @@ class YahooSearchScraper
     @url_extension = "&xargs=0&b="
     @search_results = []
     @total_results = 0
+
+    get_results
+    
   end
   
   def get_results
+
     run = true
     count = 11
+    first_run = true
     
     while run
-      if(@total_results == 0)
+      puts "\nCount: #{count}\n#{@source_url}"
+      if(first_run)
         doc = Nokogiri::HTML(open("#{@source_url}", "User-Agent" => USER_AGENTS.sample))
+        first_run = false
       else
         doc = Nokogiri::HTML(open("#{@source_url}#{@url_extension}#{count}", "User-Agent" => USER_AGENTS.sample))
         count += 10
@@ -36,6 +44,7 @@ class YahooSearchScraper
       
       ## Currently yahoo search results max out at 1000
       if doc.search('div.msg.zrp').first or (doc.search('div.res').count < 5 or count > 1011)
+        Rails.logger.info("No results for #{@source_url}\n")
         run = false
       else
         # Filter results for rubbish data. Needs refactoring out, ok for testing.
@@ -45,15 +54,21 @@ class YahooSearchScraper
 
     # Only process each lead profile once. Ignore duplicates.
     unique_results = @search_results.uniq {|r| r[:url]}
-    duplicate_results = @search_results.reject{|x| unique_results.include? x[:link]}
+    #duplicate_results = @search_results.reject{|x| unique_results.include? x[:url]}
 
+    current_tenant = Apartment::Tenant.current
     unique_results.each do |lead|
-      temp = TempLead.create(url: lead[:url], query_id: @query[:id], processed: false)
-      Query.find(@query[:id]).temp_leads << temp
+      Apartment::Tenant.switch('public')
+      TempLead.create(url: lead[:url], query_id: @query.id, account_id: @query.account_id, processed: false)
     end
+
+    Apartment::Tenant.switch(current_tenant)
+    Query.find(@query.id).update_attributes(processed: true)
+
   end      
   
   def process_results(doc)
+
     doc.search(@class_value).each do |person|
       profile_url = person.search(@link_value).first['href'].gsub(/(http\:\/\/|https\:\/\/)[a-z]+(\.)/i, "")
 
@@ -63,18 +78,19 @@ class YahooSearchScraper
         /(linkedin.com\/about)/i, /(linkedin.com\/settings)/i,
         /(linkedin.com\/shareArticle)/i, /(\/recommendations)/i,
         /(\/connections)/i, /(linkedin.com\/search)/i, /(\/group)/i, 
-        /(profiles)/i, /(linkedin.com\/job)/i, /(linkedin.com\/jobs2)/i]
+        /(profiles)/i, /(linkedin.com\/job)/i, /(linkedin.com\/jobs2)/i,
+        /(linkedin.com\/title\/)/i, /(\/updates)/i, /^(linkedin.com\/)$/i
+      ]
       
-      re = Regexp.union(bad_patterns)
-      partition_pattern = /(\s\-\s)[a-zâñéÖ\s]+/i
+      rex = Regexp.union(bad_patterns)
       
-      if((profile_url =~ correct_pattern) and (profile_url !~ re))
-        partition = person.search(@link_value).first.text.strip.partition(partition_pattern)
-        
+      if((profile_url =~ correct_pattern) and (profile_url !~ rex))
+        puts "url: #{profile_url}"
         @search_results << {url: profile_url}
         @total_results += 1
       end
     end
+
   end
 end
         

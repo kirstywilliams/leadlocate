@@ -1,0 +1,55 @@
+//
+// 	Queries
+// --------------------------------------------------
+
+.queries{
+	.query-info{
+		width: 70%;
+		float: left;
+		display: inline-block;
+		padding: 0 15px;
+
+		h3{ margin-top: 0px; }
+	}
+
+	.query-tools{
+		width: 30%;
+		float: right;
+		display-inline:block;
+		text-align: right;
+		padding: 0 15px;
+		font-size: 30px; 
+		line-height: 30px;
+
+		.query-tool{ 
+			display: inline-block; 
+			margin-right:10px; 
+			color: $sky-blue;
+
+			&:last-child{ margin-right: 0;}
+		}
+
+		a{ color: $sky-blue !important; }
+	}
+
+	.progress{
+		width: 20%;
+		float: none;
+		display: inline-block;
+		vertical-align: middle;
+		margin: 10px;
+		height: 15px;
+
+		.progress-bar{
+			background-color: $yellow;
+		}
+	}
+
+	.query{
+		margin-bottom: 20px;
+	}
+}
+
+@media screen and (max-width: 500px) {
+    .query-tools{ font-size: 18px !important; line-height: 18px !important; }
+}

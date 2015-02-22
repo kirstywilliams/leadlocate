@@ -1,29 +1,33 @@
-<div class="col-md-4 col-md-offset-4 well signin">
-  <h2>Sign in</h2>
+<div class="col-md-12 authentication">
+  <h1 class="text-xlarge">
+    Sign in
+  </h1>
+  <div class="col-md-4 col-md-offset-4 well signin">
 
-  <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), wrapper_mappings: { boolean: :vertical_boolean }) do |f| %>
-    <%= f.input :email, label: false do %>
-      <div class="input-group">
-        <%= f.input_field :email, class: 'form-control input-lg', placeholder: 'Email' %>
-        <span class="input-group-addon glyphicon glyphicon-user"></span>
-      </div>
+    <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), wrapper_mappings: { boolean: :vertical_boolean }) do |f| %>
+      <%= f.input :email, label: false do %>
+        <div class="input-group">
+          <%= f.input_field :email, class: 'form-control input-lg', placeholder: 'Email' %>
+          <span class="input-group-addon glyphicon glyphicon-user"></span>
+        </div>
+      <% end %>
+
+      <%= f.input :password, label: false do %>
+        <div class="input-group">
+          <%= f.input_field :password, class: 'form-control input-lg', placeholder: 'Password' %>
+          <span class="input-group-addon glyphicon glyphicon-lock"></span>
+        </div>
+      <% end %>
+
+      <% if devise_mapping.rememberable? -%>
+        <%= f.input :remember_me, as: :boolean %>
+      <% end -%>
+
+      <%= f.button :submit, "Sign in", class: 'btn-primary btn-block btn-lg' %>
     <% end %>
 
-    <%= f.input :password, label: false do %>
-      <div class="input-group">
-        <%= f.input_field :password, class: 'form-control input-lg', placeholder: 'Password' %>
-        <span class="input-group-addon glyphicon glyphicon-lock"></span>
-      </div>
-    <% end %>
+    <%= flash_messages layout_flash: false %>
 
-    <% if devise_mapping.rememberable? -%>
-      <%= f.input :remember_me, as: :boolean %>
-    <% end -%>
-
-    <%= f.button :submit, "Sign in", class: 'btn-primary btn-block btn-lg' %>
-  <% end %>
-
-  <%= flash_messages layout_flash: false %>
-
-  <%= render "devise/shared/links" %>
-</div><!-- ./signin -->
+    <%= render "devise/shared/links" %>
+  </div><!-- ./signin -->
+</div><!-- ./authentication -->

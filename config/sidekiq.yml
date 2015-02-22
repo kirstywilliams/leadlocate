@@ -1,0 +1,7 @@
+---
+:verbose: false
+:pidfile: ./tmp/pids/sidekiq.pid
+:concurrency: 5
+:queues:
+  - [top_priority, 5]
+  - [normal_priority, 1] 

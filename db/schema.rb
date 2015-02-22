@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150120153357) do
+ActiveRecord::Schema.define(version: 20150221223651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,9 +46,13 @@ ActiveRecord::Schema.define(version: 20150120153357) do
     t.string  "website"
     t.string  "industry"
     t.string  "founded"
+    t.string  "type"
     t.text    "address"
     t.text    "headquarters"
     t.integer "lead_id"
+    t.date    "start_date"
+    t.date    "end_date"
+    t.string  "company_type"
   end
 
   add_index "lead_companies", ["lead_id"], name: "index_lead_companies_on_lead_id", using: :btree
@@ -63,8 +67,8 @@ ActiveRecord::Schema.define(version: 20150120153357) do
   add_index "lead_educations", ["lead_id"], name: "index_lead_educations_on_lead_id", using: :btree
 
   create_table "lead_groups", force: :cascade do |t|
-    t.string  "name",         null: false
-    t.string  "linkedin_url", null: false
+    t.string  "name",    null: false
+    t.string  "link",    null: false
     t.integer "lead_id"
   end
 
@@ -72,7 +76,7 @@ ActiveRecord::Schema.define(version: 20150120153357) do
 
   create_table "lead_languages", force: :cascade do |t|
     t.string  "language",    null: false
-    t.string  "proficiency", null: false
+    t.string  "proficiency"
     t.integer "lead_id"
   end
 
@@ -122,12 +126,14 @@ ActiveRecord::Schema.define(version: 20150120153357) do
     t.string  "skill",                      null: false
     t.boolean "archived",   default: false, null: false
     t.integer "account_id"
+    t.boolean "processed",  default: false, null: false
   end
 
   create_table "temp_leads", force: :cascade do |t|
-    t.string  "url",                       null: false
-    t.integer "query_id",                  null: false
-    t.boolean "processed", default: false, null: false
+    t.string  "url",                        null: false
+    t.integer "query_id",                   null: false
+    t.boolean "processed",  default: false, null: false
+    t.integer "account_id",                 null: false
   end
 
   add_index "temp_leads", ["processed"], name: "index_temp_leads_on_processed", using: :btree

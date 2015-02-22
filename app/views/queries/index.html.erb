@@ -1,18 +1,27 @@
-<div class="col-md-12">
-	<% @queries.each do |query| %>
-		<h3>
-			<%= query.name %>
-			<small><%= query.locality %> | <%= query.skill %></small>
-			<div class="pull-right">
-				<%= link_to edit_query_path(query), class: 'icon-link' do %>
-					<small><i class="glyphicon glyphicon-cog"></i></small>
-				<% end %>
-				<small><i class="glyphicon glyphicon-plus-sign"></i></small>
-			</div>
-		</h3>
+<div class="col-md-12 queries">
+	<h1 class="text-xlarge">
+		Queries
+	</h1><!-- ./h1 -->
 
+	<% if @queries.empty? %>
 		<ul class="list-group">
 			<li class="list-group-item">No queries yet!</li>
 		</ul>
+	<% else %>
+		<% @queries.each do |query| %>
+			<div class="row query">
+				<div class="query-info">
+					<h3>
+						<%= query.name %>
+						<%= query_process_status(query) %>
+					</h3>
+					<small><%= query.skill %> | <%= query.locality %></small>
+				</div><!-- ./query-info -->
+				<div class="query-tools">
+					<%= query_leads(query) %>
+					<i class="glyphicon glyphicon-trash query-tool"></i>
+				</div><!-- ./query-tools -->
+			</div><!-- ./query -->
+		<% end %>
 	<% end %>
 </div><!-- ./col-md-12 -->

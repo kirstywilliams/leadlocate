@@ -1,0 +1,132 @@
+<div class="col-md-12 lead">
+
+	<h1 class="text-xlarge">
+		<%= @lead.name %>
+		<span class="text-medium"><%= @lead.location %> <%= ", #{@lead.country}" unless @lead.country.empty? %></span>
+	</h1><!-- ./h1 -->
+
+	<div class="lead-info">
+
+		<div class="lead-photo">
+			<%= image_tag lead_photo(@lead), alt: "#{@lead.name}" %>
+			<%= link_to @lead.linkedin_url, class: "btn btn-social-icon btn-linkedin" do %>
+				<i class="fa fa-linkedin"></i>
+			<% end %>
+		</div><!-- ./lead-photo -->
+
+		<h2 class="text-medium center"><%= @lead.headline %></h2>
+
+		<div class="col-md-8 col-md-offset-2 panel panel-default">
+			<div class="panel-body">
+
+				<!-- Summary -->
+				<% unless @lead.summary.nil? %>
+					<h3>Summary</h3>
+					<p><%= @lead.summary %></p>
+				<% end %>
+				
+				<!-- Current Positions -->
+				<% unless @lead.lead_companies.is_current.empty? %>
+					<h3>Current Positions</h3>
+					<ul>
+						<% @lead.lead_companies.is_current.each do |position| %>
+							<li><%= position.title %> at <%= position.company %></li>
+						<% end %>
+					</ul>
+				<% end %>
+				
+				<!-- Past Positions -->
+				<% unless @lead.lead_companies.is_past.empty? %>
+					<h3>Past Positions</h3>
+					<ul>
+						<% @lead.lead_companies.is_past.each do |position| %>
+							<li><%= position.title %> <%= " at #{position.company}" unless position.company.nil? %></li>
+						<% end %>
+					</ul>
+				<% end %>
+				
+				<!-- Skills -->
+				<% unless @lead.lead_skills.empty? %>
+					<h3>Skills</h3>
+					<ul>
+						<% @lead.lead_skills.each do |skill| %>
+							<li><%= skill.skill %></li>
+						<% end %>
+					</ul>
+				<% end %>
+
+				<!-- Certifications -->
+				<% unless @lead.lead_certifications.empty? %>
+					<h3>Certifications</h3>
+					<ul>
+						<% @lead.lead_certifications.each do |cert| %>
+							<li><%= cert.name %></li>
+						<% end %>
+					</ul>
+				<% end %>
+
+				<!-- Education -->
+				<% unless @lead.lead_educations.empty? %>
+					<h3>Education</h3>
+					<ul>
+						<% @lead.lead_educations.each do |ed| %>
+							<li>
+								<%= ed.name %>
+								<%= "<br/>#{ed.description}".html_safe unless ed.description.empty? %>
+								<%= "<br/>#{ed.period}".html_safe unless ed.period.empty? %>
+							</li>
+						<% end %>
+					</ul>
+				<% end %>
+
+				<!-- Languages -->
+				<% unless @lead.lead_languages.empty? %>
+					<h3>Languages</h3>
+					<ul>
+						<% @lead.lead_languages.each do |lang| %>
+							<li><%= lang.language %> <%= " | #{lang.proficiency}" unless lang.proficiency.empty? %></li>
+						<% end %>
+					</ul>
+				<% end %>
+
+				<!-- Organisations -->
+				<% unless @lead.lead_organisations.empty? %>
+					<h3>Organisations</h3>
+					<ul>
+						<% @lead.lead_organisations.each do |org| %>
+							<li>
+								<%= org.name %> 
+								<%= " | #{org.start_date}" unless org.start_date.empty? %> 
+								<%= " - #{org.end_date}" unless org.end_date.empty? %>
+							</li>
+						<% end %>
+					</ul>
+				<% end %>
+
+				<!-- Websites -->
+				<% unless @lead.lead_websites.empty? %>
+					<h3>Websites</h3>
+					<ul>
+						<% @lead.lead_websites.each do |www| %>
+							<li><%= link_to www.site, www.site %></li>
+						<% end %>
+					</ul>
+				<% end %>
+
+				<!-- Groups -->
+				<% unless @lead.lead_groups.empty? %>
+					<h3>Watering Holes</h3>
+					<ul>
+						<% @lead.lead_groups.each do |grp| %>
+							<li><%= link_to grp.name, grp.link %></li>
+						<% end %>
+					</ul>
+				<% end %>
+
+
+			</div><!-- ./panel-body -->
+		</div><!-- ./panel -->
+
+	</div><!-- ./lead-info -->
+
+</div><!-- ./col-md-12 -->

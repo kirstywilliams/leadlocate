@@ -1,14 +1,37 @@
-<div class="col-md-6 col-md-offset-3 panel panel-default">
-	<div class="panel-body">
-		<h2>Create an Account</h2>
+<div class="col-md-12 authentication">
+	<h1 class="text-xlarge">
+		Create an Account
+	</h1><!-- ./h1 -->
+	<div class="col-md-6 col-md-offset-3 panel panel-default">
+		<div class="panel-body">
 
-	    <%= simple_form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put } do |f| %>
-	    	<%= f.hidden_field :invitation_token %>
-	    	<%= f.input :name %>
-	    	<%= f.input :password %>
-	    	<%= f.input :password_confirmation %>
+		    <%= simple_form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put }, wrapper_mappings: { boolean: :vertical_boolean } do |f| %>
+		    	<%= f.hidden_field :invitation_token %>
 
-	    	<%= f.button :submit, "Create Account", class: 'btn-primary' %>
-	    <% end %><!-- ./form -->
-  	</div><!-- ./panel-body -->
-</div><!-- ./panel -->
+		    	<%= f.input :name, label: false do %>
+			        <div class="input-group">
+			          <%= f.input_field :name, class: 'form-control input-lg', placeholder: 'Name' %>
+			          <span class="input-group-addon glyphicon glyphicon-user"></span>
+			        </div>
+		      	<% end %>
+
+		      	<%= f.input :password, label: false do %>
+			        <div class="input-group">
+			          <%= f.input_field :password, class: 'form-control input-lg', placeholder: 'Password' %>
+			          <span class="input-group-addon glyphicon glyphicon-lock"></span>
+			        </div>
+		      	<% end %>
+
+		      	<%= f.input :password_confirmation, label: false do %>
+			        <div class="input-group">
+			          <%= f.input_field :password_confirmation, class: 'form-control input-lg', placeholder: 'Confirm your password' %>
+			          <span class="input-group-addon glyphicon glyphicon-lock"></span>
+			        </div>
+		      	<% end %>
+
+		    	<%= f.button :submit, "Create Account", class: 'btn-primary btn-block btn-lg' %>
+		    <% end %><!-- ./form -->
+
+	  	</div><!-- ./panel-body -->
+	</div><!-- ./panel -->
+</div><!-- ./authentication -->

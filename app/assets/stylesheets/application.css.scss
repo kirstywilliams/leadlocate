@@ -7,12 +7,14 @@
 /* Bootstrap */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "bootstrap-social";
 
 /* Layout */
 @import "layout";
 
 /* Typography */
 @import "typography";
+@import "font-awesome";
 
 /* Components */
 @import "messages";
@@ -21,3 +23,6 @@
 
 /* Pages */
 @import "signin";
+@import "leads";
+@import "queries";
+@import "users";
