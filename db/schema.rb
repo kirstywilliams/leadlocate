@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150221223651) do
+ActiveRecord::Schema.define(version: 20150222022616) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,12 +53,14 @@ ActiveRecord::Schema.define(version: 20150221223651) do
     t.date    "start_date"
     t.date    "end_date"
     t.string  "company_type"
+    t.date    "created_on"
+    t.date    "updated_on"
   end
 
   add_index "lead_companies", ["lead_id"], name: "index_lead_companies_on_lead_id", using: :btree
 
   create_table "lead_educations", force: :cascade do |t|
-    t.string  "name",        null: false
+    t.string  "name"
     t.text    "description"
     t.string  "period"
     t.integer "lead_id"
