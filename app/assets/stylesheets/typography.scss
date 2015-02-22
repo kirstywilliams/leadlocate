@@ -2,5 +2,5 @@
 // 	Typography
 // --------------------------------------------------
 
-body{ font-family: $body-font-2; }
-.color-success{ color: #3C763D; }
+body{ font-family: $body-font-2; font-size: $default-font-size; }
+p, ul, li { font-size: $default-font-size; }

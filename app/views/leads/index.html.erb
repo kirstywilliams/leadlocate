@@ -1,0 +1,28 @@
+<div class="col-md-12 leads">
+
+	<h1 class="text-xlarge">
+		<%= @query.name %>: Leads
+		<span class="text-xxlarge"><%= @leads.count %></span>
+	</h1><!-- ./h1 -->
+
+	<% if @leads.empty? %>
+		<ul class="list-group">
+			<li class="list-group-item">No leads for this query!</li>
+		</ul>
+	<% else %>
+		<% @leads.each do |lead| %>
+			<div class="col-md-4 lead">
+				<div class="lead-container">
+					<%= image_tag lead_photo(lead), alt: "#{lead.name}" %>
+					<div class="mask mask-1"></div>
+					<div class="mask mask-2"></div>
+					<div class="content">
+						<h3><%= lead.name %></h3>
+						<p><%= lead.headline %><br/><%= lead.location %>, <%= lead.country %></p>
+						<%= link_to "View", query_lead_path(lead.query, lead), class: "info" %>
+					</div><!-- ./content -->
+				</div><!-- ./lead-container -->
+			</div><!-- ./lead -->
+		<% end %>
+	<% end %>
+</div><!-- ./col-md-12 -->

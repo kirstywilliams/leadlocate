@@ -1,13 +1,31 @@
 <%= simple_form_for(@query, wrapper_mappings: { boolean: :vertical_boolean }) do |f| %>
 
-	<%= f.input :name %>
-	<%= f.input :locality %>
-	<%= f.input :skill %>
+	<%= f.input :name, label: false do %>
+        <div class="input-group">
+        	<%= f.input_field :name, class: 'form-control input-lg', placeholder: 'Query Name' %>
+          	<span class="input-group-addon glyphicon glyphicon-pencil"></span>
+        </div>
+    <% end %>
+
+    <%= f.input :locality, label: false do %>
+        <div class="input-group">
+        	<%= f.input_field :locality, class: 'form-control input-lg', placeholder: 'City, Country' %>
+          	<span class="input-group-addon glyphicon glyphicon-map-marker"></span>
+        </div>
+    <% end %>
+
+    <%= f.input :skill, label: false do %>
+        <div class="input-group">
+        	<%= f.input_field :skill, class: 'form-control input-lg', placeholder: 'Skill' %>
+          	<span class="input-group-addon glyphicon glyphicon-certificate"></span>
+        </div>
+    <% end %>
 
 	<% if @query.persisted? %>
 		<%= f.input :archived, as: :boolean %>
 	<% end %>
 
-	<%= f.button :submit, class: 'btn-primary' %>
+	<%= f.button :submit, class: 'btn-primary btn-block btn-lg' %>
 
 <% end %>
+<%= flash_messages layout_flash: false %>

@@ -5,10 +5,10 @@ require_relative 'yahoo_search_scraper'
 class SearchScraper
   attr_reader :scraper
   
-  def initialize(search_engine, query)
+  def initialize(search_engine, query_id)
 
     case search_engine
-    when /yahoo/ then @scraper = YahooProfileScraper.new(query)
+    when /yahoo/ then @scraper = YahooSearchScraper.new(query_id)
     end
 
   end

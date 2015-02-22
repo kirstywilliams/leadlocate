@@ -1,5 +1,7 @@
-<div class="col-md-8 col-md-offset-2">
-	<h2>Authorised Users</h2>
+<div class="col-md-8 col-md-offset-2 users">
+	<h1 class="text-xlarge">
+		Authorised Users
+	</h1><!-- ./h1 -->
 
 	<div class="panel panel-default">
 		<div class="panel-body">
@@ -24,7 +26,7 @@
 
 			<h3 class="extra-margin-top">Invite User</h3>
 
-			<%= simple_form_for(User.new, url: user_invitation_path, html: {class: 'form-inline' }) do |f| %>
+			<%= simple_form_for(User.new, url: user_invitation_path, html: { class: 'form-inline' }) do |f| %>
 				<%= f.input :email, placeholder: 'Email', label: false %>
 				<%= f.button :submit, 'Invite User', class: 'btn-primary' %>
 			<% end %>

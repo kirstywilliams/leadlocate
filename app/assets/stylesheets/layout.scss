@@ -2,6 +2,20 @@
 // 	Layout
 // --------------------------------------------------
 
-body{ padding-top: 20px; }
+body{ padding-top: 60px; }
 
 .extra-margin-top{ margin-top:40px; }
+.glyphicon{ top: 0; }
+
+h1{
+	margin-bottom: 60px;
+	margin-top: 30px;
+	text-align: center;
+	line-height: 70px !important;
+
+	span{
+		color: $sky-blue;
+		display: block;
+		margin: 0 auto;
+	}
+}

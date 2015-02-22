@@ -33,6 +33,8 @@
 .bg-none { background: none !important; }
 
 // other custom colors
+.color-success{ color: $lime-green; }
+.color-in-progress{ color: $yellow; }
 
 // hover backgrounds
 .bg-black-overlay{
@@ -87,7 +89,7 @@
 
 // text size
 .text-small { font-size: 12px; }
-.text-larger { font-size: 14px; }
+.text-larger { font-size: $default-font-size; }
 .text-medium { font-size: 30px; line-height: 30px; }
 .text-large { font-size: 35px !important; line-height: 40px !important; }
 .text-xlarge { font-size: 50px; line-height: 50px; }
@@ -105,6 +107,9 @@
 .border-right { border-right: 1px solid $light-gray;}
 .border-bottom { border-bottom: 1px solid $light-gray !important;}
 .border-left { border-left: 1px solid $light-gray;}
+
+// lines
+.heading-line { border-bottom: 2px solid $medium-gray; }
 
 // spacings
 

@@ -11,6 +11,7 @@ class CreateLeadCompanies < ActiveRecord::Migration
     	t.string :website
     	t.string :industry
     	t.string :founded
+        t.string :type
     	t.text :address
     	t.text :headquarters
     	t.integer :lead_id

@@ -1,7 +1,7 @@
 class CreateLeadEducations < ActiveRecord::Migration
   def change
     create_table :lead_educations do |t|
-    	t.string :name,		null: false
+    	t.string :name
     	t.text :description
     	t.string :period
     	t.integer :lead_id
